@@ -6,7 +6,9 @@
 
 /* Hero Section - Old styles removed, now handled by artist-hero-animation.css */
 #event-hero-section .hero-image-container {
-    background-image: url('../images/group.jpg');
+    background-image: url('group.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 /* Intro Section */
@@ -361,6 +363,19 @@ td:first-child {
     }
 }
 
+@media (max-width: 600px) {
+    .event-title,
+    .event-hero-title {
+        font-size: 2.2rem !important;
+    }
+    .booking-info-title {
+        word-break: break-all;
+        font-size: 1.2rem;
+    }
+    .desktop-only { display: none; }
+    .mobile-only { display: inline; }
+}
+
 .package-card.is-visible {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -402,4 +417,12 @@ td:first-child {
   .modal-content {
     margin-top: 15vh;
   }
+}
+
+.desktop-only { display: inline; }
+.mobile-only { display: none; }
+
+@media (max-width: 600px) {
+  .desktop-only { display: none; }
+  .mobile-only { display: inline; }
 }
