@@ -374,12 +374,6 @@ td:first-child {
     }
     .desktop-only { display: none; }
     .mobile-only { display: inline; }
-    #event-hero-section .hero-image-container {
-        background-size: contain;
-        background-position: top center;
-        min-height: 300px;
-        height: 40vh;
-    }
 }
 
 .package-card.is-visible {
