@@ -132,7 +132,7 @@ Bei Fragen oder Problemen:
 
 ## Lizenz
 
-Dieses Projekt ist für private Nutzung erstellt. Alle Rechte vorbehalten.
+Alle Rechte vorbehalten.
 
 ---
 
