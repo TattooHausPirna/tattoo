@@ -1,0 +1,157 @@
+/* Artist Page Specific Styles */
+
+.artist-main {
+    padding: 0;
+}
+
+/* Hero Section */
+.artist-hero {
+    text-align: center;
+    color: #fff;
+}
+
+.hero-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 1s ease;
+    opacity: 0; /* Start hidden for animation */
+    transform: scale(1.2); /* Start zoomed in */
+}
+
+/* Artist-specific hero images */
+#artist-hero-anna .hero-image-container { background-image: url('../images/anna.jpg'); }
+#artist-hero-basti .hero-image-container { background-image: url('../images/basti.jpg'); }
+#artist-hero-carlotta .hero-image-container { background-image: url('../images/carlotta.jpg'); }
+
+.artist-name-hero {
+    font-size: 6vw;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease 0.5s, transform 1s ease 0.5s;
+    text-transform: uppercase;
+    opacity: 0.3;
+}
+
+/* Entry animations - to be triggered by JS */
+body.loaded .hero-image-container {
+    opacity: 1;
+    transform: scale(1);
+}
+
+body.loaded .artist-name-hero {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Bio Section */
+.artist-bio {
+    padding: 100px 15%;
+    background-color: #000;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+    opacity: 0; /* For scroll animation */
+    transform: translateY(50px); /* For scroll animation */
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.artist-bio h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    opacity: 0.3;
+}
+
+.artist-bio p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+.instagram-link {
+    display: inline-block;
+    padding: 12px 25px;
+    border: 1px solid #fff;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.instagram-link:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+
+/* Gallery Section */
+.artist-gallery {
+    padding: 100px 5%;
+    background-color: #111;
+}
+
+.artist-gallery h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    opacity: 0.3;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.instagram-widget-placeholder {
+    background-color: #000;
+    border: 2px dashed #333;
+    padding: 50px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.instagram-widget-placeholder p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #888;
+}
+
+.gallery-item {
+    background: #222;
+    overflow: hidden;
+    opacity: 0; /* For scroll animation */
+    transform: translateY(50px); /* For scroll animation */
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* For scroll animations */
+.artist-bio.is-visible,
+.gallery-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
