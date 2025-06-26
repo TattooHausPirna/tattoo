@@ -61,4 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('loaded');
     });
 
+    var hamburger = document.getElementById('hamburger-menu');
+    if (hamburger) {
+        hamburger.onclick = function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        };
+    }
+
 });
