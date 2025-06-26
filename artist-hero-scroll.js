@@ -9,21 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return; // Don't run if essential elements aren't on the page
     }
 
-    // Detect if this is the event hero section and on mobile
-    const isEventHero = hero.id === 'event-hero-section';
-    const isMobile = window.innerWidth <= 600;
-    let initialBgSize = 'cover';
-    let finalBgSize = 'cover';
-    if (isEventHero && isMobile) {
-        initialBgSize = '120%'; // Less zoomed-in than before
-        finalBgSize = '100%';
-        // Set initial background size
-        const heroImg = hero.querySelector('.hero-image-container');
-        if (heroImg) {
-            heroImg.style.backgroundSize = initialBgSize;
-        }
-    }
-
     const initialHeroHeight = hero.offsetHeight;
     const finalHeroHeight = 150; // The height of the final header banner
     const animationDistance = initialHeroHeight - finalHeroHeight;
@@ -48,14 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
             hero.style.height = `${currentHeight}px`;
             heroName.style.fontSize = `${currentFontSize}px`;
             heroName.style.opacity = currentOpacity;
-            // Animate background size for event hero on mobile
-            if (isEventHero && isMobile) {
-                const heroImg = hero.querySelector('.hero-image-container');
-                if (heroImg) {
-                    const currentBgSize = 120 - (20 * progress); // from 120% to 100%
-                    heroImg.style.backgroundSize = `${currentBgSize}%`;
-                }
-            }
         });
 
         // --- Animate Content Sections on Reveal ---
