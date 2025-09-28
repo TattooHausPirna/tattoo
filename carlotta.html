@@ -96,14 +96,18 @@
     document.addEventListener('DOMContentLoaded', function() {
         console.log('Carlotta page loaded');
         
-        // Test with just a few images first
-        const carlottaImages = [
-            { url: 'Tattoo Carlotta/tattoo1.jpg', alt: 'Carlotta Tattoo 1' },
-            { url: 'Tattoo Carlotta/tattoo2.jpg', alt: 'Carlotta Tattoo 2' },
-            { url: 'Tattoo Carlotta/tattoo3.jpg', alt: 'Carlotta Tattoo 3' }
-        ];
+        // Generate image array from tattoo01.jpg to tattoo37.jpg
+        const carlottaImages = [];
+        for (let i = 1; i <= 37; i++) {
+            const paddedNumber = i.toString().padStart(2, '0'); // 01, 02, 03, etc.
+            carlottaImages.push({
+                url: `Tattoo Carlotta/tattoo${paddedNumber}.jpg`,
+                alt: `Carlotta Tattoo ${i}`
+            });
+        }
         
-        console.log('Testing with 3 images:', carlottaImages);
+        console.log('Loading gallery with', carlottaImages.length, 'images');
+        console.log('First few images:', carlottaImages.slice(0, 3));
         
         // Test if images exist
         const testImg = new Image();
