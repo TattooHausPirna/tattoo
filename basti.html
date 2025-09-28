@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="artist-page.css">
     <link rel="stylesheet" href="artist-hero-animation.css">
+    <link rel="stylesheet" href="css/custom-gallery.css">
 </head>
 <body class="hero-page">
     <header>
@@ -56,9 +57,12 @@
 
                 <section class="artist-gallery scroll-reveal-section">
                     <h2>Galerie</h2>
-                    <!-- LightWidget WIDGET -->
-                    <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
-                    <iframe src="https://cdn.lightwidget.com/widgets/34b2ad3a15775af0b7dbe1872777ed4e.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+                    <div class="custom-gallery" id="basti-gallery">
+                        <!-- Gallery images will be loaded here -->
+                        <div class="gallery-grid">
+                            <!-- Images will be dynamically loaded -->
+                        </div>
+                    </div>
                 </section>
             </div>
         </main>
@@ -72,5 +76,6 @@
     <script src="script.js"></script>
     <script src="artist-animations.js"></script>
     <script src="artist-hero-scroll.js"></script>
+    <script src="js/custom-gallery.js"></script>
 </body>
 </html>
