@@ -109,20 +109,8 @@
         console.log('Loading gallery with', carlottaImages.length, 'images');
         console.log('First few images:', carlottaImages.slice(0, 3));
         
-        // Test if images exist
-        const testImg = new Image();
-        testImg.onload = function() {
-            console.log('First image loaded successfully!');
-            addImagesToGallery('carlotta-gallery', carlottaImages);
-        };
-        testImg.onerror = function() {
-            console.error('First image failed to load:', carlottaImages[0].url);
-            // Show error message in gallery
-            const gallery = document.getElementById('carlotta-gallery');
-            const grid = gallery.querySelector('.gallery-grid');
-            grid.innerHTML = '<div class="gallery-empty"><h3>Images not found</h3><p>Please check that the Tattoo Carlotta folder contains the images.</p></div>';
-        };
-        testImg.src = carlottaImages[0].url;
+        // Load gallery directly
+        addImagesToGallery('carlotta-gallery', carlottaImages);
     });
     </script>
 </body>
