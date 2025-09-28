@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="artist-page.css">
     <link rel="stylesheet" href="artist-hero-animation.css">
+    <link rel="stylesheet" href="css/custom-gallery.css">
 </head>
 <body class="hero-page">
     <header>
@@ -71,9 +72,12 @@
 
                 <section class="artist-gallery scroll-reveal-section">
                     <h2>Galerie</h2>
-                    <!-- LightWidget WIDGET -->
-                    <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
-                    <iframe src="https://cdn.lightwidget.com/widgets/50ed3aaf6f265b4d9017dd8ddf1c246e.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+                    <div class="custom-gallery" id="carlotta-gallery">
+                        <!-- Gallery images will be loaded here -->
+                        <div class="gallery-grid">
+                            <!-- Images will be dynamically loaded -->
+                        </div>
+                    </div>
                 </section>
             </div>
         </main>
@@ -87,5 +91,22 @@
     <script src="script.js"></script>
     <script src="artist-animations.js"></script>
     <script src="artist-hero-scroll.js"></script>
+    <script src="js/custom-gallery.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Carlotta's gallery images from Tattoo Carlotta/ folder
+        const carlottaImages = [];
+        
+        // Generate image array from tattoo1.jpg to tattoo37.jpg
+        for (let i = 1; i <= 37; i++) {
+            carlottaImages.push({
+                url: `Tattoo Carlotta/tattoo${i}.jpg`,
+                alt: `Carlotta Tattoo ${i}`
+            });
+        }
+        
+        addImagesToGallery('carlotta-gallery', carlottaImages);
+    });
+    </script>
 </body>
 </html>
