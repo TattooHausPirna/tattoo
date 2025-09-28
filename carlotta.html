@@ -94,24 +94,31 @@
     <script src="js/custom-gallery.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Carlotta's gallery images from Tattoo Carlotta/ folder
-        const carlottaImages = [];
+        console.log('Carlotta page loaded');
         
-        // Generate image array from tattoo1.jpg to tattoo37.jpg
-        for (let i = 1; i <= 37; i++) {
-            carlottaImages.push({
-                url: `Tattoo Carlotta/tattoo${i}.jpg`,
-                alt: `Carlotta Tattoo ${i}`
-            });
-        }
+        // Test with just a few images first
+        const carlottaImages = [
+            { url: 'Tattoo Carlotta/tattoo1.jpg', alt: 'Carlotta Tattoo 1' },
+            { url: 'Tattoo Carlotta/tattoo2.jpg', alt: 'Carlotta Tattoo 2' },
+            { url: 'Tattoo Carlotta/tattoo3.jpg', alt: 'Carlotta Tattoo 3' }
+        ];
         
-        console.log('Loading Carlotta gallery with', carlottaImages.length, 'images');
-        console.log('First image URL:', carlottaImages[0]?.url);
+        console.log('Testing with 3 images:', carlottaImages);
         
-        // Wait a bit for the gallery to be ready
-        setTimeout(() => {
+        // Test if images exist
+        const testImg = new Image();
+        testImg.onload = function() {
+            console.log('First image loaded successfully!');
             addImagesToGallery('carlotta-gallery', carlottaImages);
-        }, 100);
+        };
+        testImg.onerror = function() {
+            console.error('First image failed to load:', carlottaImages[0].url);
+            // Show error message in gallery
+            const gallery = document.getElementById('carlotta-gallery');
+            const grid = gallery.querySelector('.gallery-grid');
+            grid.innerHTML = '<div class="gallery-empty"><h3>Images not found</h3><p>Please check that the Tattoo Carlotta folder contains the images.</p></div>';
+        };
+        testImg.src = carlottaImages[0].url;
     });
     </script>
 </body>
