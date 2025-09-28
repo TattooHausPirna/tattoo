@@ -18,7 +18,7 @@ Eine moderne, einseitige Website für das private Tattoo-Studio "Event Tattoo" m
 ```
 event-tattoo-website/
 ├── index.html              # Homepage
-├── anna.html              # Anna's Künstler-Seite
+├── alex.html              # Alex's Künstler-Seite
 ├── basti.html             # Basti's Künstler-Seite
 ├── carlotta.html          # Carlotta's Künstler-Seite
 ├── event.html             # Event Tattoo Services
@@ -132,7 +132,7 @@ Bei Fragen oder Problemen:
 
 ## Lizenz
 
-Alle Rechte sind vorbehalten. 
+Dieses Projekt ist für private Nutzung erstellt. Alle Rechte vorbehalten.
 
 ---
 
