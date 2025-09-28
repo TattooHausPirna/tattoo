@@ -144,7 +144,7 @@ main {
 }
 
 /* Artist-specific photos */
-#photo-anna { background-image: url('anna.jpg'); }
+#photo-alex { background-image: url('alex.jpg'); }
 #photo-basti { 
     background-image: url('basti.jpg');
     background-position: center 20%;
