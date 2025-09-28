@@ -24,7 +24,7 @@
 }
 
 /* Artist-specific hero images */
-#artist-hero-anna .hero-image-container { background-image: url('anna.jpg'); }
+#artist-hero-alex .hero-image-container { background-image: url('alex.jpg'); }
 #artist-hero-basti .hero-image-container { background-image: url('basti.jpg'); }
 #artist-hero-carlotta .hero-image-container { background-image: url('carlotta.jpg'); }
 
