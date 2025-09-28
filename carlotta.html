@@ -100,11 +100,13 @@
         // Generate image array from tattoo1.jpg to tattoo37.jpg
         for (let i = 1; i <= 37; i++) {
             carlottaImages.push({
-                url: `Tattoo Carlotta/tattoo${i}.jpg`,
+                url: `./Tattoo Carlotta/tattoo${i}.jpg`,
                 alt: `Carlotta Tattoo ${i}`
             });
         }
         
+        console.log('Loading Carlotta gallery with', carlottaImages.length, 'images');
+        console.log('First image URL:', carlottaImages[0]?.url);
         addImagesToGallery('carlotta-gallery', carlottaImages);
     });
     </script>
