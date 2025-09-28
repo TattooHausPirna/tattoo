@@ -180,14 +180,106 @@ document.addEventListener('DOMContentLoaded', function() {
 // Function to manually add images to a gallery
 function addImagesToGallery(galleryId, images) {
     const gallery = document.getElementById(galleryId);
-    if (!gallery) return;
+    if (!gallery) {
+        console.error('Gallery not found:', galleryId);
+        return;
+    }
     
     const grid = gallery.querySelector('.gallery-grid');
-    const customGallery = window.customGalleries?.[galleryId];
+    if (!grid) {
+        console.error('Gallery grid not found in:', galleryId);
+        return;
+    }
     
-    if (customGallery) {
-        customGallery.images = images;
-        customGallery.renderImages(grid);
+    console.log('Adding', images.length, 'images to gallery:', galleryId);
+    
+    // Clear existing content
+    grid.innerHTML = '';
+    
+    // Add images to grid
+    images.forEach((image, index) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.innerHTML = `<img src="${image.url}" alt="${image.alt || 'Gallery Image'}" loading="lazy">`;
+        
+        item.addEventListener('click', () => openLightbox(galleryId, index, images));
+        grid.appendChild(item);
+    });
+}
+
+// Simple lightbox function
+function openLightbox(galleryId, index, images) {
+    // Create lightbox if it doesn't exist
+    let lightbox = document.getElementById(`lightbox-${galleryId}`);
+    if (!lightbox) {
+        const lightboxHTML = `
+            <div class="lightbox" id="lightbox-${galleryId}">
+                <div class="lightbox-content">
+                    <button class="lightbox-close">&times;</button>
+                    <button class="lightbox-nav lightbox-prev">‹</button>
+                    <button class="lightbox-nav lightbox-next">›</button>
+                    <img src="" alt="Gallery Image">
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', lightboxHTML);
+        lightbox = document.getElementById(`lightbox-${galleryId}`);
+        
+        // Add event listeners
+        lightbox.querySelector('.lightbox-close').addEventListener('click', () => closeLightbox(galleryId));
+        lightbox.querySelector('.lightbox-prev').addEventListener('click', (e) => {
+            e.stopPropagation();
+            previousImage(galleryId, images);
+        });
+        lightbox.querySelector('.lightbox-next').addEventListener('click', (e) => {
+            e.stopPropagation();
+            nextImage(galleryId, images);
+        });
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox(galleryId);
+            }
+        });
+    }
+    
+    // Show current image
+    const img = lightbox.querySelector('img');
+    img.src = images[index].url;
+    img.alt = images[index].alt || 'Gallery Image';
+    
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Store current index
+    lightbox.currentIndex = index;
+    lightbox.images = images;
+}
+
+function closeLightbox(galleryId) {
+    const lightbox = document.getElementById(`lightbox-${galleryId}`);
+    if (lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+function previousImage(galleryId, images) {
+    const lightbox = document.getElementById(`lightbox-${galleryId}`);
+    if (lightbox) {
+        lightbox.currentIndex = (lightbox.currentIndex - 1 + images.length) % images.length;
+        const img = lightbox.querySelector('img');
+        img.src = images[lightbox.currentIndex].url;
+        img.alt = images[lightbox.currentIndex].alt || 'Gallery Image';
+    }
+}
+
+function nextImage(galleryId, images) {
+    const lightbox = document.getElementById(`lightbox-${galleryId}`);
+    if (lightbox) {
+        lightbox.currentIndex = (lightbox.currentIndex + 1) % images.length;
+        const img = lightbox.querySelector('img');
+        img.src = images[lightbox.currentIndex].url;
+        img.alt = images[lightbox.currentIndex].alt || 'Gallery Image';
     }
 }
 
